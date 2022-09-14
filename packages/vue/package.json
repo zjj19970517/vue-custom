@@ -1,0 +1,30 @@
+{
+  "name": "@meils/vue",
+  "version": "1.0.0",
+  "description": "@meils/vue",
+  "main": "index.js",
+  "module": "dist/vue.esm-bundler.js",
+  "types": "dist/vue.d.ts",
+  "unpkg": "dist/vue.global.js",
+  "jsdelivr": "dist/vue.global.js",
+  "files": [
+    "index.js",
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "Vue",
+    "formats": [
+      "esm-bundler",
+      "esm-browser",
+      "cjs",
+      "global"
+    ]
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "",
+  "license": "MIT"
+}
