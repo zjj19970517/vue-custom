@@ -1,4 +1,6 @@
 import { toRawType } from '@meils/shared'
+
+import { TargetType } from './enums'
 import { ReactiveFlags, Target } from './reactive'
 
 /**
