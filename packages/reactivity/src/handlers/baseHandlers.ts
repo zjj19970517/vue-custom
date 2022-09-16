@@ -1,4 +1,15 @@
-import { extend, isObject, warn } from '@meils/shared'
+import {
+  extend,
+  hasChanged,
+  hasOwn,
+  isArray,
+  isIntegerKey,
+  isObject,
+  warn
+} from '@meils/shared'
+
+import { trigger } from '../effect'
+import { TriggerOpTypes } from '../enums'
 import { reactive, readonly, Target } from '../reactive'
 
 const get = /*#__PURE__*/ createGetter()
@@ -86,7 +97,22 @@ function createSetter(shallow = false) {
     value: unknown,
     receiver: object
   ) {
+    let oldValue = (target as any)[key]
+
+    const hadKey =
+      isArray(target) && isIntegerKey(key)
+        ? Number(key) < target.length
+        : hasOwn(target, key)
     const res = Reflect.set(target, key, value, receiver)
+
+    if (!hadKey) {
+      // 新增
+      trigger(target, TriggerOpTypes.ADD, key, value)
+    } else if (hasChanged(value, oldValue)) {
+      // 更新
+      trigger(target, TriggerOpTypes.SET, key, value, oldValue)
+    }
+
     return res
   }
 }

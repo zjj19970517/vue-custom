@@ -16,7 +16,7 @@
     "removeComments": false,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["puppeteer", "node"],
+    "types": ["node"],
     "rootDir": ".",
     "paths": {
       "@meils/*": ["packages/*/src"],

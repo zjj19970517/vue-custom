@@ -1,4 +1,5 @@
 import { isObject } from '@meils/shared'
+import { TargetType } from './enums'
 
 import {
   mutableHandlers,
