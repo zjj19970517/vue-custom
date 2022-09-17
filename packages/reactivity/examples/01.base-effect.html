@@ -10,11 +10,15 @@
 
 <body>
   测试 effect
+  <div id="app"></div>
+
+  <script src="../dist/reactivity.global.js"></script>
   <script>
+    console.log('VueReactivity', VueReactivity)
     const { reactive, effect } = VueReactivity;
+    debugger
     const state = reactive({ name: 'meils', age: 12 });
     const app = document.getElementById('app');
-
 
     // effect 接受一个函数，返回一个响应式副作用函数
     const update = effect(() => {
@@ -22,6 +26,7 @@
     })
 
     setTimeout(() => {
+      debugger
       state.name = 'zjj'
     }, 1000)
   </script>

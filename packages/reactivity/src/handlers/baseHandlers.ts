@@ -8,8 +8,8 @@ import {
   warn
 } from '@meils/shared'
 
-import { trigger } from '../effect'
-import { TriggerOpTypes } from '../enums'
+import { track, trigger } from '../effect'
+import { TrackOpTypes, TriggerOpTypes } from '../enums'
 import { reactive, readonly, Target } from '../reactive'
 
 const get = /*#__PURE__*/ createGetter()
@@ -73,6 +73,7 @@ function createGetter(isReadonly = false, shallow = false) {
     if (!isReadonly) {
       // 非只读，需要进行依赖收集
       // TODO:
+      track(target, TrackOpTypes.GET, key)
     }
 
     if (shallow) {
@@ -97,7 +98,7 @@ function createSetter(shallow = false) {
     value: unknown,
     receiver: object
   ) {
-    let oldValue = (target as any)[key]
+    const oldValue = (target as any)[key]
 
     const hadKey =
       isArray(target) && isIntegerKey(key)

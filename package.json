@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node scripts/dev.js",
     "build": "node scripts/build.js",
-    "serve": "serve examples/"
+    "serve": "serve"
   },
   "version": "1.0.0",
   "main": "index.js",

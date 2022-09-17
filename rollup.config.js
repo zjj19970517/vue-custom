@@ -45,10 +45,16 @@ function createConfig(format, output) {
   }
 
   const entryFile = `src/index.ts`
-  const external = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {})
-  ]
+  let external = []
+
+  if (isGlobalBuild) {
+    external = []
+  } else {
+    external = [
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {})
+    ]
+  }
 
   const tsPlugin = TSPlugin({
     check: process.env.NODE_ENV === 'production' && !hasTSChecked,
