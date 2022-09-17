@@ -17,7 +17,6 @@
     "name": "VueReactivity",
     "formats": [
       "esm-bundler",
-      "esm-browser",
       "cjs",
       "global"
     ]
@@ -26,5 +25,8 @@
     "vue"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@meils/shared": "*"
+  }
 }

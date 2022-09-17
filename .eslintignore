@@ -1,0 +1,7 @@
+node_modules/**
+public/dist/**
+app/view/**
+web/common/qrcode.js
+.eslintrc.js
+**/*.config.js
+**/dist/**

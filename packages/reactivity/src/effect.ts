@@ -46,7 +46,7 @@ export class ReactiveEffect<T = any> {
       return this.fn()
     }
 
-    let lastShouldTrack = shouldTrack // 记录上一个 shouldTrack 值
+    const lastShouldTrack = shouldTrack // 记录上一个 shouldTrack 值
     try {
       this.parent = activeEffect // 上一个响应式副作用 ReactiveEffect
 
@@ -134,7 +134,7 @@ export function trigger(
     return
   }
 
-  let deps: (Dep | undefined)[] = [] // 收集所有的 dep 集合
+  const deps: (Dep | undefined)[] = [] // 收集所有的 dep 集合
 
   if (key === 'length' && isArray(target)) {
     // 更改数组的 .length 属性

@@ -8,3 +8,11 @@ export const hasOwn = (
 
 export const hasChanged = (value: any, oldValue: any): boolean =>
   !Object.is(value, oldValue)
+
+// export const def = (obj: object, key: string | symbol, value: any) => {
+//   Object.defineProperty(obj, key, {
+//     configurable: true,
+//     enumerable: false,
+//     value
+//   })
+// }
